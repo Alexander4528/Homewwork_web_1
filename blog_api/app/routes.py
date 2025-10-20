@@ -175,3 +175,67 @@ async def edit_post_handler(
         "author": author,
         "message": "Post updated successfully!"
     })
+@router.get("/create-user", response_class=HTMLResponse)
+async def create_user_form(request: Request):
+    return templates.TemplateResponse("create_user.html", {"request": request})
+
+@router.post("/create-user", response_class=HTMLResponse)
+async def create_user_handler(
+    request: Request,
+    email: str = Form(...),
+    login: str = Form(...),
+    password: str = Form(...)
+):
+    try:
+        user_data = UserCreate(email=email, login=login, password=password)
+        storage.create_user(user_data.dict())
+        return templates.TemplateResponse("create_user.html", {
+            "request": request,
+            "message": "User created successfully!"
+        })
+    except Exception as e:
+        return templates.TemplateResponse("create_user.html", {
+            "request": request,
+            "error": str(e)
+        })
+@router.get("/create-user", response_class=HTMLResponse)
+async def create_user_form(request: Request):
+    return templates.TemplateResponse("create_user.html", {"request": request})
+
+@router.post("/create-user", response_class=HTMLResponse)
+async def create_user_handler(
+    request: Request,
+    email: str = Form(...),
+    login: str = Form(...),
+    password: str = Form(...)
+):
+    try:
+        # Проверяем, нет ли уже пользователя с таким email или login
+        for user in storage.get_all_users():
+            if user.email == email:
+                return templates.TemplateResponse("create_user.html", {
+                    "request": request,
+                    "error": "Email already registered"
+                })
+            if user.login == login:
+                return templates.TemplateResponse("create_user.html", {
+                    "request": request,
+                    "error": "Login already taken"
+                })
+        
+        user_data = {
+            "email": email,
+            "login": login,
+            "password": password
+        }
+        storage.create_user(user_data)
+        
+        return templates.TemplateResponse("create_user.html", {
+            "request": request,
+            "message": "User created successfully!"
+        })
+    except Exception as e:
+        return templates.TemplateResponse("create_user.html", {
+            "request": request,
+            "error": f"Error creating user: {str(e)}"
+        })

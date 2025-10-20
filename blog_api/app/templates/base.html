@@ -19,6 +19,7 @@
         input, textarea, select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
         textarea { height: 200px; resize: vertical; }
         .message { padding: 10px; background: #d4edda; color: #155724; border-radius: 4px; margin-bottom: 15px; }
+        .error { padding: 10px; background: #f8d7da; color: #721c24; border-radius: 4px; margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -27,12 +28,17 @@
             <h1><a href="/" style="text-decoration: none; color: inherit;">Blog Platform</a></h1>
             <div class="nav">
                 <a href="/">Home</a>
+                <a href="/create-user">Create User</a>
                 <a href="/create-post">Create Post</a>
             </div>
         </div>
         
         {% if message %}
         <div class="message">{{ message }}</div>
+        {% endif %}
+        
+        {% if error %}
+        <div class="error">{{ error }}</div>
         {% endif %}
         
         {% block content %}{% endblock %}

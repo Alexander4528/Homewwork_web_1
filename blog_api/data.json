@@ -1,0 +1,55 @@
+{
+  "users": {
+    "1": {
+      "id": 1,
+      "email": "asdasdadas@gmail.com",
+      "login": "anonymus",
+      "password": "12345678",
+      "createdAt": "2025-10-20 22:12:34.755220",
+      "updatedAt": "2025-10-20 22:12:34.755220"
+    },
+    "2": {
+      "id": 2,
+      "email": "asdasdadas@gmail.com",
+      "login": "anonymmus",
+      "password": "12345678",
+      "createdAt": "2025-10-20 22:14:39.570741",
+      "updatedAt": "2025-10-20 22:14:39.570741"
+    },
+    "3": {
+      "id": 3,
+      "email": "user@example.com",
+      "login": "myuser",
+      "password": "mypassword",
+      "createdAt": "2025-10-20 22:18:11.099300",
+      "updatedAt": "2025-10-20 22:18:11.099300"
+    },
+    "4": {
+      "id": 4,
+      "email": "asdasdadas@gmail.com",
+      "login": "anonymmus",
+      "password": "12345678",
+      "createdAt": "2025-10-20 22:21:30.729118",
+      "updatedAt": "2025-10-20 22:21:30.729118"
+    },
+    "5": {
+      "id": 5,
+      "email": "asdasdadas@gmail.com",
+      "login": "anonymmus",
+      "password": "12345678",
+      "createdAt": "2025-10-20 22:21:39.597875",
+      "updatedAt": "2025-10-20 22:21:39.597875"
+    },
+    "6": {
+      "id": 6,
+      "email": "asdasdadas@gmail.com",
+      "login": "anonymmus",
+      "password": "12345678",
+      "createdAt": "2025-10-20 22:24:02.884151",
+      "updatedAt": "2025-10-20 22:24:02.884151"
+    }
+  },
+  "posts": {},
+  "next_user_id": 7,
+  "next_post_id": 1
+}

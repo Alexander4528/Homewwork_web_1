@@ -5,9 +5,23 @@ from .storage import storage
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup
+    # Startup - создаем тестового пользователя если нужно
     print("Blog API started!")
-    print(f"Loaded {len(storage.users)} users and {len(storage.posts)} posts")
+    
+    # Создаем тестового пользователя если нет пользователей
+    if len(storage.users) == 0:
+        try:
+            test_user_data = {
+                "email": "author@blog.com",
+                "login": "blogauthor", 
+                "password": "blogpass123"
+            }
+            storage.create_user(test_user_data)
+            print("✓ Created test user: blogauthor (author@blog.com)")
+        except Exception as e:
+            print(f"✗ Error creating test user: {e}")
+    
+    print(f"✓ Loaded {len(storage.users)} users and {len(storage.posts)} posts")
     yield
     # Shutdown
     print("Blog API shutting down...")
