@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Blog Platform{% endblock %}
+
+{% block content %}
+<div class="post">
+    <h2>{{ post.title }}</h2>
+    <div class="post-meta">
+        By {{ author.login if author else "Unknown" }} | 
+        {{ post.createdAt.strftime('%Y-%m-%d %H:%M') }}
+        {% if post.updatedAt != post.createdAt %}
+        (Updated: {{ post.updatedAt.strftime('%Y-%m-%d %H:%M') }})
+        {% endif %}
+    </div>
+    <div style="white-space: pre-wrap; margin: 20px 0;">{{ post.content }}</div>
+    
+    <div>
+        <a href="/edit-post/{{ post.id }}" class="btn" style="background: #28a745;">Edit Post</a>
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
